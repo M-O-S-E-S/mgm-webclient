@@ -1,3 +1,6 @@
+
+import Promise = require('bluebird');
+
 import { performCall, updateToken, NetworkResponse } from './call';
 
 import { LoginResponse, GetEstatesResponse, GetGroupsResponse, GetHostsResponse, GetJobsResponse, GetRegionsResponse, GetUsersResponse } from './messages';

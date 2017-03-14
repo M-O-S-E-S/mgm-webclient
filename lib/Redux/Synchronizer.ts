@@ -1,3 +1,6 @@
+
+import Promise = require('bluebird');
+
 import { ClientStack, NetworkResponse, GetEstatesResult, GetGroupsResult, GetUsersResult, LoginResponse } from '../ClientStack';
 import { Map, Set } from 'immutable';
 import { ReduxStore } from '../Redux';
@@ -62,12 +65,6 @@ export function Synchronizer(store: ReduxStore): void {
 export function ResumeSession(store: ReduxStore): Promise<void> {
   return ClientStack.resumeSession().then((res: LoginResponse) => {
     store.Auth.Login(res.uuid, res.isAdmin, res.token);
-  }).catch((err: Error) => {
-    console.log('session resume failed: ' + err.message)
-    if (err.message === 'jwt expired') {
-      store.Auth.Logout();
-      store.Auth.Error('Token expired, please log in again');
-    }
   });
 }
 

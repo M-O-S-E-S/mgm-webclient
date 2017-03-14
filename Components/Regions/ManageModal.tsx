@@ -1,6 +1,7 @@
 import * as React from "react";
 import { Map } from 'immutable';
 import { Action } from 'redux';
+import Promise = require('bluebird');
 
 import { Region, Estate, Host, EstateMap } from '../../lib/Immutable';
 import { Modal, Form, FormGroup, ControlLabel, FormControl, Row, Col, Alert, Button } from 'react-bootstrap';

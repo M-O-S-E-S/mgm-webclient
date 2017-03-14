@@ -2,6 +2,7 @@ import * as React from "react";
 import { Action } from 'redux';
 import { Map } from 'immutable';
 import shallowequal = require('shallowequal');
+import Promise = require('bluebird');
 
 import { Host, Region } from '../../lib/Immutable';
 

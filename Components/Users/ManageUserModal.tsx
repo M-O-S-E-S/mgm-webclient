@@ -1,6 +1,7 @@
 import * as React from "react";
 import { Map } from 'immutable';
 import { Action } from 'redux';
+import Promise = require('bluebird');
 
 import { User } from '../../lib/Immutable';
 

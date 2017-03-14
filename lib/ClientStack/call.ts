@@ -1,4 +1,6 @@
 
+import Promise = require('bluebird');
+
 export interface NetworkResponse {
   Success: boolean
   Message?: string

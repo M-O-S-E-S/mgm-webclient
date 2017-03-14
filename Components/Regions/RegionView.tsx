@@ -2,6 +2,7 @@ import * as React from "react";
 import { Store } from 'redux'
 import { Estate, Region } from '../../lib/Immutable';
 import shallowequal = require('shallowequal');
+import Promise = require('bluebird');
 
 import { BusyButton } from '../BusyButton';
 

@@ -1,4 +1,5 @@
 import * as React from "react";
+import Promise = require('bluebird');
 
 import { Grid, Row, Col, Form, FormGroup, ControlLabel, FormControl, Alert, Button, Radio } from 'react-bootstrap';
 
