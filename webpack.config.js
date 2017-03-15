@@ -1,7 +1,8 @@
 module.exports = {
-    entry: ['./app.tsx'],
+    entry: "./app.tsx",
     output: {
-        filename: "./build/js/bundle.js",
+        filename: "bundle.js",
+        path: __dirname + "/build/js"
     },
 
     // Enable sourcemaps for debugging webpack's output.
@@ -13,9 +14,11 @@ module.exports = {
     },
 
     module: {
-        loaders: [
+        rules: [
             // All files with a '.ts' or '.tsx' extension will be handled by 'ts-loader'.
-            { test: /\.tsx?$/, loader: "ts-loader" }
+            { test: /\.tsx?$/, loader: "ts-loader" },
+            // All output '.js' files will have any sourcemaps re-processed by 'source-map-loader'.
+            { enforce: 'pre', test: /\.js$/, loader: "source-map-loader" }
         ]
     }
 };
