@@ -37,6 +37,10 @@ export class RegionView extends React.Component<regionProps, {}> {
     }
     return ClientStack.Region.Start(this.props.region).then(() => {
       alertify.success(this.props.region.name + ' signalled START');
+    }).then(() => {
+      // extra delay to keep users from spamming start Button
+      // a started process takes many seconds to filter through the system
+      return Promise.delay(20 * 1000);
     }).catch((err: Error) => {
       alertify.error('Could not start ' + this.props.region.name + ': ' + err.message);
     })
