@@ -31,7 +31,7 @@ export class RegionView extends React.Component<regionProps, {}> {
       alertify.error(this.props.region.name + " is not assigned to a host");
       return Promise.resolve();
     }
-    if (this.props.region.isRunning) {
+    if (this.props.region.isRunning()) {
       alertify.error(this.props.region.name + " is already running");
       return Promise.resolve();
     }
@@ -47,7 +47,7 @@ export class RegionView extends React.Component<regionProps, {}> {
   }
 
   handleStop(): Promise<void> {
-    if (!this.props.region.isRunning) {
+    if (!this.props.region.isRunning()) {
       alertify.error('Cannot stop a region that is not running');
       return Promise.resolve();
     }
@@ -59,7 +59,7 @@ export class RegionView extends React.Component<regionProps, {}> {
   }
 
   handleKill(): Promise<void> {
-    if (!this.props.region.isRunning) {
+    if (!this.props.region.isRunning()) {
       alertify.error('Cannot kill a region that is not running');
       return Promise.resolve();
     }
@@ -72,7 +72,7 @@ export class RegionView extends React.Component<regionProps, {}> {
 
   render() {
     let statView = <span>~ not running ~</span>;
-    if (this.props.region.isRunning) {
+    if (this.props.region.isRunning()) {
       statView = <RegionStatView status={this.props.region.status} />;
     }
 
@@ -82,7 +82,7 @@ export class RegionView extends React.Component<regionProps, {}> {
           <Row>
             <Col xs={1}>
               {this.props.isAdmin ?
-                <Button bsSize="xsmall" disabled={this.props.region.isRunning} onClick={this.props.onManage}>
+                <Button bsSize="xsmall" disabled={this.props.region.isRunning()} onClick={this.props.onManage}>
                   <i className="fa fa-cog" aria-hidden="true" ></i>
                 </Button> :
                 <span />
@@ -98,7 +98,7 @@ export class RegionView extends React.Component<regionProps, {}> {
         </Col>
         <Col xs={6} sm={6} md={6} lg={2}>
           <Control
-            isRunning={this.props.region.isRunning}
+            isRunning={this.props.region.isRunning()}
             hasHost={this.props.region.node !== ''}
             start={this.handleStart.bind(this)}
             stop={this.handleStop.bind(this)}

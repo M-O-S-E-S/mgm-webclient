@@ -56,7 +56,6 @@ export const RegionsReducer = function (state = Map<string, Region>(), action: A
             .set('estateName', r.estateName)
             .set('status', r.status)
             .set('node', r.node)
-            .set('isRunning', r.isRunning)
         );
       });
       return state;

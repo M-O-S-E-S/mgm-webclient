@@ -1,3 +1,5 @@
+
+
 export interface IEstate {
   EstateID: number
   EstateName: string
@@ -41,7 +43,8 @@ export interface IHost {
   address: string
   port: number
   name: string
-  slots: number
+  slots: string
+  public_ip: string
   status: string
 }
 
@@ -67,11 +70,9 @@ export interface IRegion {
   name: string
   x: number
   y: number
-  status: string
+  status: any
   node: string
-  publicAddress: string
   port: number
-  isRunning: Boolean
 }
 
 export interface IUser {

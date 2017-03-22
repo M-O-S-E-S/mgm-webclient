@@ -152,9 +152,9 @@ export class RegionList extends React.Component<props, state> {
                         if (this.state.stateSearch === 'all')
                             return true;
                         if (this.state.stateSearch === 'running')
-                            return r.isRunning;
+                            return r.isRunning();
                         if (this.state.stateSearch === 'stopped')
-                            return ! r.isRunning;
+                            return ! r.isRunning();
                     }, [])
                     // sort remaining regions by name
                     .sort((a: Region, b: Region) => { return a.name.localeCompare(b.name) })

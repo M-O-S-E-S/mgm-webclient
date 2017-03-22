@@ -112,7 +112,10 @@ class PendingUserStack {
 class RegionStack {
     static Get(): Promise<IRegion[]> {
         return performCall('GET', '/api/region').then((res: GetRegionsResponse) => {
-            return res.Regions;
+            return res.Regions.map((r: IRegion) => {
+                r.status = r.status ? JSON.parse(r.status) : null;
+                return r;
+            });
         });
     }
     static Create(name: string, x: number, y: number, estate: string): Promise<string> {

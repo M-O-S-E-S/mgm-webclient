@@ -89,7 +89,7 @@ export class ManageModal extends React.Component<props, state> {
   }
 
   onDelete(): Promise<void> {
-    if (this.props.region.isRunning) {
+    if (this.props.region.isRunning()) {
       this.setState({
         deleteError: 'Cannot delete a running region'
       });
@@ -123,7 +123,7 @@ export class ManageModal extends React.Component<props, state> {
       });
       return Promise.resolve();
     }
-    if (this.props.region.isRunning) {
+    if (this.props.region.isRunning()) {
       this.setState({
         estateError: 'Refusing to change estate on running region'
       });
@@ -167,7 +167,7 @@ export class ManageModal extends React.Component<props, state> {
       });
       return Promise.resolve();
     }
-    if (this.props.region.isRunning) {
+    if (this.props.region.isRunning()) {
       this.setState({
         hostSuccess: '',
         hostError: 'Refusing to change estate on running region'
@@ -213,7 +213,7 @@ export class ManageModal extends React.Component<props, state> {
     }
   }
   onChangePosition(): Promise<void> {
-    if (this.props.region.isRunning) {
+    if (this.props.region.isRunning()) {
       this.setState({
         coordsSuccess: '',
         coordsError: 'Refusing to change coordinates on running region'
@@ -264,7 +264,7 @@ export class ManageModal extends React.Component<props, state> {
       regionId = this.props.region.uuid;
       selectDefault = this.props.estateMap.get(this.props.region.uuid).toString();
       node = this.props.region.node;
-      isRunning = this.props.region.isRunning;
+      isRunning = this.props.region.isRunning();
     }
 
     return (

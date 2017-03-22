@@ -63,7 +63,7 @@ export class ContentModal extends React.Component<props, state> {
             });
             return;
         }
-        if (!this.props.region.isRunning) {
+        if (!this.props.region.isRunning()) {
             this.setState({
                 loadOarSuccess: '',
                 loadOarError: 'The region must be running for OAR operations'
@@ -92,7 +92,7 @@ export class ContentModal extends React.Component<props, state> {
     }
 
     onSaveOar(): Promise<void> {
-        if (!this.props.region.isRunning) {
+        if (!this.props.region.isRunning()) {
             this.setState({
                 saveOarSuccess: '',
                 saveOarError: 'The region must be running for OAR operations'
@@ -117,7 +117,7 @@ export class ContentModal extends React.Component<props, state> {
     }
 
     onNuke(): Promise<void> {
-        if (!this.props.region.isRunning) {
+        if (!this.props.region.isRunning()) {
             this.setState({
                 saveOarSuccess: '',
                 saveOarError: 'The region must be running for OAR operations'
