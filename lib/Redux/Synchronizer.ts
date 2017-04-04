@@ -54,10 +54,14 @@ export function Synchronizer(store: ReduxStore): void {
     hosts(store),
     users(store)
   ]).catch((err: Error) => {
-    console.log('Error in synchronizer: ' + err.message);
     if (err.message === 'jwt expired') {
       store.Auth.Logout();
       store.Auth.Error('Token expired, please log in again');
+    } else if(err.message === 'Invalid Session') {
+      store.Auth.Logout();
+      store.Auth.Error('Invalid / missing session, please log in again');
+    } else {
+      console.log('Error in synchronizer: ' + err.message);
     }
   });
 }
